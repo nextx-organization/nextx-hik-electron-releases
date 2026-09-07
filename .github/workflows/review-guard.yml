@@ -1,3 +1,20 @@
+# ═══ 07/09/2026 — ĐÃ CHUYỂN SANG `mode: block` ═══
+# Chú thích bên dưới mô tả giai đoạn `warn` ĐÃ KẾT THÚC. Giữ lại làm mốc đối chiếu.
+#
+# Số đo ngày chạy warn đầu tiên, toàn org 30 repo:
+#   · 133 lượt chạy · 123 đánh giá thật · 10 bỏ qua (8 do tiêu đề release/backmerge)
+#   · chạm bậc A mà CHƯA duyệt:  3 lượt = 2 PR = 1 PR THẬT
+#   · chạm bậc B (chỉ đánh dấu): 50
+#   · PR > 25 file:              14
+#
+# PR thật duy nhất sẽ bị chặn: nextx-hrm#644 — bật backplane Redis cho hub HRM,
+# sửa Program.cs, ĐÃ MERGE MÀ KHÔNG AI DUYỆT. Đúng loại thay đổi guard sinh ra để bắt.
+#
+# ⇒ Giá phải trả ≈ 1 PR/ngày toàn org, không phải 28,1% commit như luật một bậc bản đầu.
+#   Mẫu 123 > ngưỡng 40. Bậc B vẫn chỉ đánh dấu, không chặn.
+#
+# Lùi lại: đổi `block` về `warn` ở dòng cuối file. Không cần đụng gì khác.
+
 # Goi lai guard review vung loi o nextx-ci. KHONG chep noi dung guard vao day.
 #
 # Dang chay `mode: warn` — KHONG chan merge. Giai doan nay chi de DEM.
@@ -19,4 +36,4 @@ jobs:
   guard:
     uses: nextx-organization/nextx-ci/.github/workflows/require-review-on-risk.yml@main
     with:
-      mode: warn
+      mode: block
