@@ -1,0 +1,22 @@
+# Goi lai guard review vung loi o nextx-ci. KHONG chep noi dung guard vao day.
+#
+# Dang chay `mode: warn` — KHONG chan merge. Giai doan nay chi de DEM.
+# Do tren lich su 90 ngay toan org: bac A ~28,5 commit/tuan = 3,2 review/nguoi/tuan.
+# Bat `block` sau khi co so that mot tuan va da thong nhat ai duyet cho ai.
+name: review-guard
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  pull_request_review:
+    types: [submitted, dismissed]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  guard:
+    uses: nextx-organization/nextx-ci/.github/workflows/require-review-on-risk.yml@main
+    with:
+      mode: warn
