@@ -1,3 +1,20 @@
+# ═══ 07/09/2026 — ĐÃ CHUYỂN SANG `mode: block` ═══
+# Chú thích bên dưới mô tả giai đoạn `warn` ĐÃ KẾT THÚC. Giữ lại làm mốc đối chiếu.
+#
+# Vì sao dám bật dù đo được 0/50 PR thật điền đủ: nguyên nhân KHÔNG phải lười.
+# Template có sẵn ở 43/44 repo nhưng `gh pr create` KHÔNG áp template — GitHub chỉ
+# chèn nó ở giao diện web, mà org này 23% PR do nextx-bot tạo, phần lớn còn lại
+# tạo bằng CLI. Đo 150 PR gần nhất: 13 có dấu vết template, 7 điền thật.
+#
+# Đã vá nguyên nhân gốc TRƯỚC khi bật (nextx-ci#151):
+#   · thêm template cho nextx-ci — repo duy nhất còn thiếu, nay đủ 44/44
+#   · thông báo khi thiếu kèm khối DÁN ĐƯỢC NGAY + chỉ rõ bẫy `gh pr create`
+#
+# Hàng release KHÔNG bị chặn: guard bỏ qua sẵn PR nháp · PR bot · nhánh
+# release/|hotfix-release/|backmerge/ · tiêu đề release|promote|backmerge.
+#
+# Lùi lại: đổi `block` về `warn` ở dòng cuối file. Không cần đụng gì khác.
+
 # Goi lai guard boi canh PR o nextx-ci. KHONG chep noi dung guard vao day.
 #
 # `mode: warn` — chi nhac, khong chan. NHUNG warn thi gan nhu khong ai dien,
@@ -16,4 +33,4 @@ jobs:
   guard:
     uses: nextx-organization/nextx-ci/.github/workflows/pr-context-guard.yml@main
     with:
-      mode: warn
+      mode: block
