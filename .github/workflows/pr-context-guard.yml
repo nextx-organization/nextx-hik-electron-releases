@@ -1,0 +1,19 @@
+# Goi lai guard boi canh PR o nextx-ci. KHONG chep noi dung guard vao day.
+#
+# `mode: warn` — chi nhac, khong chan. NHUNG warn thi gan nhu khong ai dien,
+# nen dung de warn qua mot tuan: khong bat block thi se khong bao gio co du lieu.
+name: pr-context-guard
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  guard:
+    uses: nextx-organization/nextx-ci/.github/workflows/pr-context-guard.yml@main
+    with:
+      mode: warn
