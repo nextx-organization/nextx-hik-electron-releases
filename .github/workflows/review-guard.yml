@@ -1,3 +1,17 @@
+# ═══ 08/09/2026 — TRẢ VỀ `mode: warn` ═══
+# Guard chặn thì PHẢI có người duyệt. Ở NextX chỉ anh David duyệt được, mà anh
+# không có thời gian ⇒ PR bị chặn sẽ nằm chờ, rồi đội tìm đường vòng (đổi tiêu đề
+# thành `release...` là lách được). Guard hoá trang trí, tệ hơn lúc chưa có.
+#
+# `warn` vẫn ĐẾM đủ: mỗi PR chạm bậc A vẫn được ghi nhận, dữ liệu vẫn chảy về
+# nextx-devmetrics. Chỉ khác là không khoá merge.
+#
+# Bật lại `block` khi nào có CODEOWNERS phân công người duyệt theo vùng. Đo 08/09
+# trên 14 repo BE, ai đang thật sự viết vùng lõi:
+#     Program.cs      Lê Anh Lương 56%
+#     docker-compose  Lê Anh Lương 78%
+#     workflow deploy Fry 98,5%
+
 # ═══ 07/09/2026 — ĐÃ CHUYỂN SANG `mode: block` ═══
 # Chú thích bên dưới mô tả giai đoạn `warn` ĐÃ KẾT THÚC. Giữ lại làm mốc đối chiếu.
 #
@@ -36,4 +50,4 @@ jobs:
   guard:
     uses: nextx-organization/nextx-ci/.github/workflows/require-review-on-risk.yml@main
     with:
-      mode: block
+      mode: warn
